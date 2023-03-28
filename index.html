@@ -100,7 +100,7 @@ function savedata(e) {
        email:email.value,
        phone:phone.value,
     }
- axios.post("https://crudcrud.com/api/5042d04c3df74fb692bdc0867970879f/appointmentData",obj)
+ axios.post("https://crudcrud.com/api/ebb8d85d22034b9d9869c4347e8dda6c/appointmentData",obj)
  .then((res)=>{
     console.log(res)
    
@@ -108,16 +108,18 @@ function savedata(e) {
  .catch((err)=>{console.log(err)}) 
 }
 function getData(){
-    axios.get('https://crudcrud.com/api/5042d04c3df74fb692bdc0867970879f/appointmentData')
+    axios.get('https://crudcrud.com/api/ebb8d85d22034b9d9869c4347e8dda6c/appointmentData')
 .then((res)=>{
     console.log(res)
     appendData(res.data)
  })
  .catch((err)=>{console.log(err)})
 }
-setInterval(()=>{
-    getData();
-},1000)
+//
+//     getData();
+// });
+getData();
+
  
     
 function appendData(arr) {
@@ -160,7 +162,7 @@ function appendData(arr) {
         }
         div1.append(span1,"-",span3,"-",span2," ",span4,delbtn,editbtn)
         itemList.append(div1)
-    
+    getData();
 });
 }
 
