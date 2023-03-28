@@ -100,21 +100,25 @@ function savedata(e) {
        email:email.value,
        phone:phone.value,
     }
- axios.post("https://crudcrud.com/api/0f63c7d680364ef2bd0ef29d3f58a31d/appointmentData",obj)
+ axios.post("https://crudcrud.com/api/5042d04c3df74fb692bdc0867970879f/appointmentData",obj)
  .then((res)=>{
     console.log(res)
+   
  })
  .catch((err)=>{console.log(err)}) 
 }
 function getData(){
-    axios.get('https://crudcrud.com/api/0f63c7d680364ef2bd0ef29d3f58a31d/appointmentData')
+    axios.get('https://crudcrud.com/api/5042d04c3df74fb692bdc0867970879f/appointmentData')
 .then((res)=>{
     console.log(res)
     appendData(res.data)
  })
  .catch((err)=>{console.log(err)})
 }
-  getData();
+setInterval(()=>{
+    getData();
+},1000)
+ 
     
 function appendData(arr) {
     itemList.innerHTML=null
@@ -159,6 +163,7 @@ function appendData(arr) {
     
 });
 }
+
         
    
 
