@@ -101,7 +101,7 @@ function savedata(e) {
        phone:phone.value,
     }
 
- axios.post("https://crudcrud.com/api/1fa5f11550e341c9b734e7c7b4e13b8d/appointmentData",obj)
+ axios.post("https://crudcrud.com/api/e3250bbb90fe411c82ffe83181dd20c4/appointmentData",obj)
  .then((res)=>{
     console.log(res) 
    getData();
@@ -109,7 +109,7 @@ function savedata(e) {
  .catch((err)=>{console.log(err)}) 
 }
 function getData(){
-    axios.get('https://crudcrud.com/api/1fa5f11550e341c9b734e7c7b4e13b8d/appointmentData')
+    axios.get('https://crudcrud.com/api/e3250bbb90fe411c82ffe83181dd20c4/appointmentData')
 .then((res)=>{
     console.log(res)
     appendData(res.data)
@@ -119,7 +119,12 @@ function getData(){
 }
 
 // getData();
-
+function update(id,obj){
+    axios.put(`https://crudcrud.com/api/e3250bbb90fe411c82ffe83181dd20c4/appointmentData/${id}`,obj)
+         .then((res)=>{
+            getData()
+         })
+}
  
     
 function appendData(arr) {
@@ -146,7 +151,7 @@ function appendData(arr) {
 
         delbtn.onclick=(e)=>{
             
-            axios.delete(`https://crudcrud.com/api/1fa5f11550e341c9b734e7c7b4e13b8d/appointmentData/${element._id}`)
+            axios.delete(`https://crudcrud.com/api/e3250bbb90fe411c82ffe83181dd20c4/appointmentData/${element._id}`)
             .then((res)=>{
                 getData()
             })
@@ -154,6 +159,21 @@ function appendData(arr) {
     
         editbtn.innerHTML="Edit"
         editbtn.onclick=(e)=>{
+          
+                name.value=element.name
+            email.value=element.email
+            phone.value=element.phone
+            password.value=element.password
+         console.log("done")
+         axios.delete(`https://crudcrud.com/api/e3250bbb90fe411c82ffe83181dd20c4/appointmentData/${element._id}`)
+            .then((res)=>{
+                getData()
+            })
+
+    
+         
+      
+          
             // console.log(e.target.parentNode.childNodes[0].textContent);
             // exprenseAmount.value=e.target.parentNode.childNodes[0].textContent;
             // description.value=e.target.parentNode.childNodes[4].textContent;
